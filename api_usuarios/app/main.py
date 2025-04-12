@@ -20,7 +20,7 @@ app = FastAPI(
 # Configuración de CORS
 origins = []
 # Obtener orígenes permitidos de variables de entorno o usar valores predeterminados
-allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,https://pwa-test.vercel.app")
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,https://pwa-test.vercel.app,https://pwa-test-7ypj.vercel.app")
 if allowed_origins:
     origins.extend(allowed_origins.split(","))
 
