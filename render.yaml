@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: api-users
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: cd api_usuarios && python init_db.py && alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: 30
+      - key: ALLOWED_ORIGINS
+        value: https://pwa-test.vercel.app,http://localhost:3000
+      - key: ADMIN_EMAIL
+        value: admin@example.com
+      - key: ADMIN_PASSWORD
+        value: adminpassword
+      - key: ADMIN_NAME
+        value: Administrador
+    autoDeploy: true
